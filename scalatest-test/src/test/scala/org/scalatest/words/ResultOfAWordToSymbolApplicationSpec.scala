@@ -30,7 +30,7 @@ class ResultOfAWordToSymbolApplicationSpec extends FunSpec {
     )
     
     it("should have pretty toString") {
-      val result = new ResultOfAWordToSymbolApplication('file)
+      val result = new ResultOfAWordToSymbolApplication(sym"file")
       result.toString should be ("a ('file)")
     }
   }

@@ -657,14 +657,14 @@ class InspectorShorthandsSpec extends FunSpec with TableDrivenPropertyChecks {
     // SKIP-SCALATESTJS-START
     it("should allow be symbol to work with arbitrary objects") {
       case class Person(name: String, happy: Boolean)
-      all (List(Person("Fred", true), Person("Sally", true)) ) should be ('happy)
+      all (List(Person("Fred", true), Person("Sally", true)) ) should be (sym"happy")
     }
 
     it("should throw TestFailedException with correct stack depth and message when 'be symbol' failed") {
       forAll(nullableExamples) { colFun => 
         val col = colFun(Set("", "boom!", ""))
         val e2 = intercept[exceptions.TestFailedException] {
-          all(col) should be ('empty) 
+          all(col) should be (sym"empty") 
         }
         e2.failedCodeFileName should be (Some("InspectorShorthandsSpec.scala"))
         e2.failedCodeLineNumber should be (Some(thisLineNumber - 3))
@@ -687,7 +687,7 @@ class InspectorShorthandsSpec extends FunSpec with TableDrivenPropertyChecks {
       forAll(nullableExamples) { colFun => 
         val col = colFun(Set("", "boom!", ""))
         val e2 = intercept[exceptions.TestFailedException] {
-          all (col) shouldBe 'empty 
+          all (col) shouldBe sym"empty" 
         }
         e2.failedCodeFileName should be (Some("InspectorShorthandsSpec.scala"))
         e2.failedCodeLineNumber should be (Some(thisLineNumber - 3))
@@ -710,7 +710,7 @@ class InspectorShorthandsSpec extends FunSpec with TableDrivenPropertyChecks {
       forAll(nullableExamples) { colFun => 
         val col = colFun(Set("peace 1", "", "peace 2"))
         val e2 = intercept[exceptions.TestFailedException] {
-          all(col) should not be ('empty) 
+          all(col) should not be (sym"empty") 
         }
         e2.failedCodeFileName should be (Some("InspectorShorthandsSpec.scala"))
         e2.failedCodeLineNumber should be (Some(thisLineNumber - 3))
@@ -1537,7 +1537,7 @@ class InspectorShorthandsSpec extends FunSpec with TableDrivenPropertyChecks {
       forAll(traversableExamples) { colFun => 
         val col = colFun(Set(Set(), Set("boom!"), Set()))
         val e2 = intercept[exceptions.TestFailedException] {
-          all(col) should be ('empty) 
+          all(col) should be (sym"empty") 
         }
         e2.failedCodeFileName should be (Some("InspectorShorthandsSpec.scala"))
         e2.failedCodeLineNumber should be (Some(thisLineNumber - 3))
@@ -1560,7 +1560,7 @@ class InspectorShorthandsSpec extends FunSpec with TableDrivenPropertyChecks {
       forAll(traversableExamples) { colFun => 
         val col = colFun(Set(Set(), Set("boom!"), Set()))
         val e2 = intercept[exceptions.TestFailedException] {
-          all(col) should not be 'empty 
+          all(col) should not be sym"empty" 
         }
         e2.failedCodeFileName should be (Some("InspectorShorthandsSpec.scala"))
         e2.failedCodeLineNumber should be (Some(thisLineNumber - 3))
@@ -3670,12 +3670,12 @@ class InspectorShorthandsSpec extends FunSpec with TableDrivenPropertyChecks {
       import collection.JavaConverters._
       it("should do nothing if succeeds") {
         val jMap123: java.util.Map[Int, Int] = Map(1 -> 5, 2 -> 5, 3 -> 5).asJava
-        all (jMap123) should have ('value(5))
+        all (jMap123) should have (sym"value"(5))
       }
       it("should throw a TFE with a good error message if fails") {
         val jMap12345: java.util.Map[Int, Int] = javaMap(Entry(1, 5), Entry(2, 5), Entry(3, 5), Entry(4, 6), Entry(5, 5))
         val e = intercept[exceptions.TestFailedException] {
-          all(jMap12345) should have ('value(5))
+          all(jMap12345) should have (sym"value"(5))
         }
         e.failedCodeFileName should be (Some("InspectorShorthandsSpec.scala"))
         e.failedCodeLineNumber should be (Some(thisLineNumber - 3))

@@ -45,8 +45,8 @@ class OsgiSuite extends JUnitSuite with ShouldMatchersForJUnit {
   )
 
   @Test def verifyScalaTestBundlesResolve {
-    bundleNamed("org.scalatest") should be ('defined)
-    bundleNamed("org.scalactic") should be ('defined)
+    bundleNamed("org.scalatest") should be (sym"defined")
+    bundleNamed("org.scalactic") should be (sym"defined")
   }
 
   @Test def scalaPackageImportsUseVersionRangeForCurrentMinorUpToNextMinor {

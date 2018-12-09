@@ -253,7 +253,7 @@ class SuiteSpec extends FunSpec {
   // SKIP-SCALATESTJS-START
   describe("The simpleNameForTest method") {
     it("should return the correct test simple name with or without Informer") {
-      val simpleNameForTest = PrivateMethod[String]('simpleNameForTest)
+      val simpleNameForTest = PrivateMethod[String](sym"simpleNameForTest")
       assert((Suite invokePrivate simpleNameForTest("testThis")) === "testThis")
       assert((Suite invokePrivate simpleNameForTest("testThis(Informer)")) === "testThis")
       assert((Suite invokePrivate simpleNameForTest("test(Informer)")) === "test")

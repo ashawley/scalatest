@@ -158,13 +158,13 @@ class ShouldBeShorthandForAllSpec extends FunSpec with EmptyMocks with BookPrope
     // SKIP-SCALATESTJS-START
     it("should work with symbol") {
       
-      emptyMock shouldBe 'empty
-      isEmptyMock shouldBe 'empty
-      all(List(emptyMock, isEmptyMock)) shouldBe 'empty
+      emptyMock shouldBe sym"empty"
+      isEmptyMock shouldBe sym"empty"
+      all(List(emptyMock, isEmptyMock)) shouldBe sym"empty"
       
       val list1 = List(noPredicateMock)
       val ex1 = intercept[TestFailedException] {
-        all(list1) shouldBe 'empty
+        all(list1) shouldBe sym"empty"
       }
       assert(ex1.message === Some(errorMessage(0, "NoPredicateMock has neither an empty nor an isEmpty method", thisLineNumber - 2, list1)))
       assert(ex1.failedCodeFileName === Some("ShouldBeShorthandForAllSpec.scala"))
@@ -172,27 +172,27 @@ class ShouldBeShorthandForAllSpec extends FunSpec with EmptyMocks with BookPrope
       
       val list2 = List(noPredicateMock)
       val ex2 = intercept[TestFailedException] {
-        all(list2) shouldBe 'full
+        all(list2) shouldBe sym"full"
       }
       assert(ex2.message === Some(errorMessage(0, "NoPredicateMock has neither a full nor an isFull method", thisLineNumber - 2, list2)))
       assert(ex2.failedCodeFileName === Some("ShouldBeShorthandForAllSpec.scala"))
       assert(ex2.failedCodeLineNumber === Some(thisLineNumber - 4))
       
-      all(List(emptyMock, isEmptyMock)) shouldBe a ('empty)
+      all(List(emptyMock, isEmptyMock)) shouldBe a (sym"empty")
       
       val list3 = List(noPredicateMock)
       val ex3 = intercept[TestFailedException] {
-        all(list3) shouldBe a ('empty)
+        all(list3) shouldBe a (sym"empty")
       }
       assert(ex3.message === Some(errorMessage(0, "NoPredicateMock has neither an empty nor an isEmpty method", thisLineNumber - 2, list3)))
       assert(ex3.failedCodeFileName === Some("ShouldBeShorthandForAllSpec.scala"))
       assert(ex3.failedCodeLineNumber === Some(thisLineNumber - 4))
 
-      all(List(emptyMock)) shouldBe an ('empty)
+      all(List(emptyMock)) shouldBe an (sym"empty")
       
       val list4 = List(noPredicateMock)
       val ex4 = intercept[TestFailedException] {
-        all(list4) shouldBe an ('empty)
+        all(list4) shouldBe an (sym"empty")
       }
       assert(ex4.message === Some(errorMessage(0, "NoPredicateMock has neither an empty nor an isEmpty method", thisLineNumber - 2, list4)))
       assert(ex4.failedCodeFileName === Some("ShouldBeShorthandForAllSpec.scala"))

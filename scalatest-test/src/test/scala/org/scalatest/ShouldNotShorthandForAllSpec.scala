@@ -199,14 +199,14 @@ class ShouldNotShorthandForAllSpec extends FunSpec with EmptyMocks with BookProp
     // SKIP-SCALATESTJS-START
     it("should work with symbol") {
       
-      all(List(notEmptyMock)) shouldNot { be ('empty) }
-      all(List(notEmptyMock)) shouldNot be ('empty)
-      all(List(isNotEmptyMock)) shouldNot { be ('empty) }
-      all(List(isNotEmptyMock)) shouldNot be ('empty)
+      all(List(notEmptyMock)) shouldNot { be (sym"empty") }
+      all(List(notEmptyMock)) shouldNot be (sym"empty")
+      all(List(isNotEmptyMock)) shouldNot { be (sym"empty") }
+      all(List(isNotEmptyMock)) shouldNot be (sym"empty")
       
       val list1 = List(noPredicateMock)
       val ex1 = intercept[TestFailedException] {
-        all(list1) shouldNot { be ('empty) }
+        all(list1) shouldNot { be (sym"empty") }
       }
       assert(ex1.message === Some(errorMessage(0, "NoPredicateMock has neither an empty nor an isEmpty method", thisLineNumber - 2, list1)))
       assert(ex1.failedCodeFileName === Some("ShouldNotShorthandForAllSpec.scala"))
@@ -214,7 +214,7 @@ class ShouldNotShorthandForAllSpec extends FunSpec with EmptyMocks with BookProp
 
       val list2 = List(noPredicateMock)
       val ex2 = intercept[TestFailedException] {
-        all(list2) shouldNot (be ('full))
+        all(list2) shouldNot (be (sym"full"))
       }
       assert(ex2.message === Some(errorMessage(0, "NoPredicateMock has neither a full nor an isFull method", thisLineNumber - 2, list2)))
       assert(ex2.failedCodeFileName === Some("ShouldNotShorthandForAllSpec.scala"))
@@ -222,7 +222,7 @@ class ShouldNotShorthandForAllSpec extends FunSpec with EmptyMocks with BookProp
 
       val list3 = List(noPredicateMock)
       val ex3 = intercept[TestFailedException] {
-        all(list3) shouldNot be ('empty)
+        all(list3) shouldNot be (sym"empty")
       }
       assert(ex3.message === Some(errorMessage(0, "NoPredicateMock has neither an empty nor an isEmpty method", thisLineNumber - 2, list3)))
       assert(ex3.failedCodeFileName === Some("ShouldNotShorthandForAllSpec.scala"))
@@ -230,7 +230,7 @@ class ShouldNotShorthandForAllSpec extends FunSpec with EmptyMocks with BookProp
 
       val list4 = List(noPredicateMock)
       val ex4 = intercept[TestFailedException] {
-        all(list4) shouldNot be ('full)
+        all(list4) shouldNot be (sym"full")
       }
       assert(ex4.message === Some(errorMessage(0, "NoPredicateMock has neither a full nor an isFull method", thisLineNumber - 2, list4)))
       assert(ex4.failedCodeFileName === Some("ShouldNotShorthandForAllSpec.scala"))

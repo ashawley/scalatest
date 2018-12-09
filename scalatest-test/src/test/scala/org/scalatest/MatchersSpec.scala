@@ -123,7 +123,7 @@ class MatchersSpec extends FunSpec {
       
       describe("apply(Any) returns HavePropertyMatcher") {
         
-        val generator = new HavePropertyMatcherGenerator('name, Prettifier.default, source.Position.here)
+        val generator = new HavePropertyMatcherGenerator(sym"name", Prettifier.default, source.Position.here)
         val havePropMatcher = generator("test")
         
         it("should have pretty toString") {

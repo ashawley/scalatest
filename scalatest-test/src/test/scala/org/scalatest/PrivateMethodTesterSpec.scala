@@ -26,7 +26,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(s: String) = s + " sesame!"
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret("open")) === "open sesame!")
     }
 
@@ -35,7 +35,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(i: Int) = i + 42
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(1)) === 43)
     }
 
@@ -44,7 +44,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(b: Boolean) = !b
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(true)) === false)
     }
 
@@ -53,7 +53,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(f: Float) = f
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(1.0f)) === 1.0f)
     }
 
@@ -62,7 +62,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(d: Double) = d
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(1.0d)) === 1.0d)
     }
 
@@ -71,7 +71,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(c: Char) = c + 1
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret('a')) === 'b')
     }
 
@@ -80,7 +80,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(i: Short) = i + 1
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(8.asInstanceOf[Short])) === 9)
     }
 
@@ -89,7 +89,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(i: Byte) = i + 1
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(8.asInstanceOf[Byte])) === 9)
     }
 
@@ -98,7 +98,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(i: Long) = i + 1
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(8l)) === 9l)
     }
 
@@ -107,7 +107,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(i: Long, s: String, b: Boolean) = i + 1
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(8l, "hi", false)) === 9l)
     }
 
@@ -115,7 +115,7 @@ class PrivateMethodTesterSpec extends FunSpec {
       class Modest {
         private def secret(s: String) = Option(s).getOrElse("open") + " sesame!"
       }
-      val secret = PrivateMethod[String]('secret)
+      val secret = PrivateMethod[String](sym"secret")
       assert(((new Modest) invokePrivate secret(null)) === "open sesame!")
     }
   }

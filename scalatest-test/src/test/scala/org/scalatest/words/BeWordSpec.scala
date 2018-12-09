@@ -226,7 +226,7 @@ class BeWordSpec extends FunSpec with FileMocks {
 
     // SKIP-SCALATESTJS-START
     describe("a(Symbol) method returns Matcher") {
-      val mt = be a ('file)
+      val mt = be a (sym"file")
       
       it("should have pretty toString") {
         mt.toString should be ("be a 'file")
@@ -391,7 +391,7 @@ class BeWordSpec extends FunSpec with FileMocks {
 
     // SKIP-SCALATESTJS-START
     describe("an(Symbol) method returns Matcher") {
-      val mt = be an ('file)
+      val mt = be an (sym"file")
       
       it("should have pretty toString") {
         mt.toString should be ("be an 'file")
@@ -752,7 +752,7 @@ class BeWordSpec extends FunSpec with FileMocks {
 
     // SKIP-SCALATESTJS-START
     describe("apply(Symbol) method returns Matcher") {
-      val mt = be ('file)
+      val mt = be (sym"file")
       
       it("should have pretty toString") {
         mt.toString should be ("be ('file)")

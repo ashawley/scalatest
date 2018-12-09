@@ -163,7 +163,7 @@ class ConductorDeprecatedSuite extends FunSuite with Matchers with Conductors wi
     a.run(None, Args(rep))
     val tf = rep.testFailedEventsReceived
     tf.size should === (1)
-    tf.head.throwable should be ('defined)
+    tf.head.throwable should be (sym"defined")
     tf.head.throwable.get should be theSameInstanceAs e
   }
 
@@ -350,7 +350,7 @@ class ConductorDeprecatedSuite extends FunSuite with Matchers with Conductors wi
     a.run(None, Args(rep))
     val tf = rep.testFailedEventsReceived
     tf.size should === (1)
-    tf.head.throwable should be ('defined)
+    tf.head.throwable should be (sym"defined")
     tf.head.throwable.get should be theSameInstanceAs e
   }
 
@@ -375,7 +375,7 @@ class ConductorDeprecatedSuite extends FunSuite with Matchers with Conductors wi
     a.run(None, Args(rep))
     val tf = rep.testFailedEventsReceived
     tf.size should === (1)
-    tf.head.throwable should be ('defined)
+    tf.head.throwable should be (sym"defined")
     tf.head.throwable.get should be theSameInstanceAs e
   }
 
@@ -400,7 +400,7 @@ class ConductorDeprecatedSuite extends FunSuite with Matchers with Conductors wi
     a.run(None, Args(rep))
     val tf = rep.testFailedEventsReceived
     tf.size should === (1)
-    tf.head.throwable should be ('defined)
+    tf.head.throwable should be (sym"defined")
     tf.head.throwable.get should be theSameInstanceAs e
   }
 }

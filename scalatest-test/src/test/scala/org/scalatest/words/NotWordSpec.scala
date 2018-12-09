@@ -743,7 +743,7 @@ class NotWordSpec extends FunSpec with FileMocks {
 
     // SKIP-SCALATESTJS-START
     describe("be(Symbol) method returns Matcher") {
-      val mt = not be ('file)
+      val mt = not be (sym"file")
       
       it("should have pretty toString") {
         mt.toString should be ("not be 'file")
@@ -853,7 +853,7 @@ class NotWordSpec extends FunSpec with FileMocks {
 
     // SKIP-SCALATESTJS-START
     describe("apply(ResultOfAWordToSymbolApplication) method returns Matcher") {
-      val mt = not be a ('file)
+      val mt = not be a (sym"file")
       
       it("should have pretty toString") {
         mt.toString should be ("not be a ('file)")
@@ -1018,7 +1018,7 @@ class NotWordSpec extends FunSpec with FileMocks {
 
     // SKIP-SCALATESTJS-START
     describe("be(ResultOfAnWordToSymbolApplication) method returns Matcher") {
-      val mt = not be an ('file)
+      val mt = not be an (sym"file")
       
       it("should have pretty toString") {
         mt.toString should be ("not be an ('file)")

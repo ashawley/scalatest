@@ -28,7 +28,7 @@ import org.scalactic._
 class SuiteSpec extends org.scalatest.FunSpec with PrivateMethodTester {
 
   describe("The private testMethodTakesInformer method") {
-    val testMethodTakesAFixtureAndInformer = PrivateMethod[Boolean]('testMethodTakesAFixtureAndInformer)
+    val testMethodTakesAFixtureAndInformer = PrivateMethod[Boolean](sym"testMethodTakesAFixtureAndInformer")
     val suiteObject = Suite
     it("should return true if passed a string that ends in (FixtureParam, Informer)") {
       assert(suiteObject invokePrivate testMethodTakesAFixtureAndInformer("thisDoes(FixtureParam, Informer)"))
