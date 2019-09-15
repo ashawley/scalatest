@@ -1,35 +1,4 @@
-import sbt._
-import Keys._
-import java.net.{URL, URLClassLoader}
-import java.io.PrintWriter
-import scala.io.Source
-import com.typesafe.sbt.osgi.SbtOsgi._
-import com.typesafe.sbt.SbtPgp._
-import org.scalajs.sbtplugin.ScalaJSPlugin
-import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
-import org.portablescala.sbtplatformdeps.PlatformDepsPlugin.autoImport._
-import com.typesafe.tools.mima.plugin.MimaKeys.{mimaPreviousArtifacts, mimaCurrentClassfiles, mimaBinaryIssueFilters}
-import com.typesafe.tools.mima.core._
-import com.typesafe.tools.mima.core.ProblemFilters._
-
-object ScalatestBuild extends Build {
-
-  // To run gentests
-  // rm -rf gentests
-  // sbt genGenTests/test  (etc., look at specific failures on CI output)
-
-  // To enable deprecation warnings on the fly
-  // set scalacOptions in ThisBuild ++= Seq("-unchecked", "-deprecation")
-
-  // To temporarily switch sbt to a different Scala version:
-  // > ++ 2.10.5
-  val buildScalaVersion = "2.12.8"
-
-  val releaseVersion = "3.0.8"
-
-  val previousReleaseVersion = "3.0.5"
-
-  val scalacheckVersion = "1.14.0"
+  val scalacheckVersion = "1.14.1-RC2"
   val easyMockVersion = "3.2"
   val jmockVersion = "2.8.3"
   val mockitoVersion = "1.10.19"
